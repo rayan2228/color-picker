@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Picker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎨 Color Picker</h1>
+      <div class="color-picker">
+        <label for="colorInput">Choose a color:</label>
+        <input type="color" id="colorInput" value="#ff0000" />
+      </div>
+      <div class="color-display">
+        <div class="color-box" id="pickedColor">
+          <span class="color-label">Picked Color</span>
+        </div>
+        <div class="color-box" id="complementaryColor">
+          <span class="color-label">Complementary</span>
+        </div>
+      </div>
+      <button id="saveColor">💾 Save Color</button>
+      <div class="saved-colors" id="savedColors">
+        <h2>📁 Saved Colors</h2>
+        <div class="saved-colors-list"></div>
+      </div>
+    </div>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Copied to clipboard!</div>
+    <script src="script.js"></script>
+  </body>
+</html>
