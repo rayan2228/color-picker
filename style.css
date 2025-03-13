@@ -133,6 +133,9 @@ button:hover {
   overflow-y: auto;
   overflow-x: hidden;
 }
+.saved-colors-list::-webkit-scrollbar {
+  width: 0px;
+}
 
 .saved-color {
   width: 100%;
