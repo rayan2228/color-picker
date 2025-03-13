@@ -21,3 +21,27 @@ function updateColorDisplay(selectedColor, complementaryColor) {
   pickedColor.style.backgroundColor = selectedColor;
   complementaryColorElm.style.backgroundColor = complementaryColor;
 }
+
+pickedColor.addEventListener("click", () =>
+  copyTheColor(pickedColor.style.backgroundColor)
+);
+
+complementaryColorElm.addEventListener("click", () =>
+  copyTheColor(complementaryColorElm.style.backgroundColor)
+);
+
+function copyTheColor(target) {
+  navigator.clipboard
+    .writeText(target)
+    .then(() => {
+      toastNotification.style.visibility = "visible";
+      toastNotification.style.opacity = 10;
+    })
+    .catch(() => (toastNotification.innerText = "failed to copy"))
+    .finally(() => {
+      setTimeout(() => {
+        toastNotification.style.visibility = "hidden";
+        toastNotification.style.opacity = 0;
+      }, 2000);
+    });
+}
