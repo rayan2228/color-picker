@@ -7,6 +7,7 @@ const savedColorsListElm = document.querySelector(".saved-colors-list");
 const toastNotificationElm = document.getElementById("toast");
 let pickedColorCode = "#ffffff";
 let complementaryColorCode = "#000000";
+const savedColors = JSON.parse(localStorage.getItem("savedColors")) || [];
 
 colorInputElm.addEventListener("input", () => {
   pickedColorCode = colorInputElm.value;
@@ -50,15 +51,29 @@ function copyTheColor(target) {
 }
 
 function savedColor() {
-  const savedColorElm = document.createElement("div");
-  savedColorElm.classList.add("saved-color");
-  savedColorElm.innerHTML = `
-    <div style="background-color: ${pickedColorCode}">
-      <span class="color-label" >${pickedColorCode}</span>
-    </div>
-    <div  style="background-color: ${complementaryColorCode}">
-      <span class="color-label">${complementaryColorCode}</span>
-    </div>
-  `;
-  savedColorsListElm.prepend(savedColorElm);
+  savedColors.push({
+    pickedColorCode,
+    complementaryColorCode,
+  });
+  localStorage.setItem("savedColors", JSON.stringify(savedColors));
+  getSavedColors();
 }
+
+function getSavedColors() {
+  savedColorsListElm.innerHTML = "";
+  savedColors.forEach(({ pickedColorCode, complementaryColorCode }) => {
+    const savedColorElm = document.createElement("div");
+    savedColorElm.classList.add("saved-color");
+    savedColorElm.innerHTML = `
+            <div style="background-color: ${pickedColorCode}">
+              <span class="color-label" >${pickedColorCode}</span>
+            </div>
+            <div  style="background-color: ${complementaryColorCode}">
+              <span class="color-label">${complementaryColorCode}</span>
+            </div>
+          `;
+    savedColorsListElm.prepend(savedColorElm);
+  });
+}
+
+getSavedColors();
