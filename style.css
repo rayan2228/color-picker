@@ -91,6 +91,14 @@ input[type="color"]:hover {
   text-align: center;
 }
 
+#pickedColor {
+  background-color: #ffffff;
+}
+
+#complementaryColor {
+  background-color: #000000;
+}
+
 button {
   width: 100%;
   padding: 1rem;
@@ -121,19 +129,17 @@ button:hover {
 }
 
 .saved-colors-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .saved-color {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 50px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
   padding: 0.5rem;
   position: relative;
   overflow: hidden;
@@ -146,23 +152,12 @@ button:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
-.saved-color::after {
-  content: attr(data-color);
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.saved-color:hover::after {
-  opacity: 1;
+.saved-color div {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Toast Notification */
