@@ -13,7 +13,8 @@ colorInput.addEventListener("input", () => {
 });
 
 function getComplementaryColor(selectedColor) {
-    
+  const base = parseInt(selectedColor.slice(1), 16);
+  return `#${(0xffffff ^ base).toString(16).padStart(6, "0")}`;
 }
 
 function updateColorDisplay(selectedColor, complementaryColor) {
